@@ -2,7 +2,7 @@ Project Zomboid - Launcher for Linux and OSX
 =============================================
 
 Project Zomboid is an awesome indie Zombie survival game. The atmosphere is great, the environment as well. The
-romero-like zombies are well made. Only problem; it only work on Windows.
+romero-like zombies are well made. Only problem; it only works on Windows.
 
 With the little adaptation that I did here, it works also great on OSX and Linux !
 
@@ -24,4 +24,4 @@ Problem ?
 
 Have another problem ? [Create a ticket](https://github.com/zimbatm/project-zomboid-posix-launcher/issues/new) with as much details as possible. Or send me an email at jonas@pfenniger.name
 
-Cheers, Jonas
+Cheers, Jonas aka. [@zimbatm](http://twitter.com/zimbatm)

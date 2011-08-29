@@ -4,6 +4,20 @@ cd `dirname $0`
 
 set -e
 
+check() {
+  if ! which $1 >/dev/null 2>&1; then
+    echo "Sorry buddy, I need \`$1\` to work properly."
+    echo
+    echo "Run me again when you installed it."
+    echo
+    exit 1
+  fi
+}
+check java
+check wget
+check uname
+check unzip
+
 case "`uname`" in
   Darwin)
     platform=macosx

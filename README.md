@@ -1,4 +1,4 @@
-Project Zomboid - Launchers for Linux and OSX
+Project Zomboid - Launcher for Linux and OSX
 =============================================
 
 Project Zomboid is an awesome indie Zombie survival game. The atmosphere is great, the environment as well. The

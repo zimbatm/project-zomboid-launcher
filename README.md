@@ -16,6 +16,12 @@ Get the game
 * The first time, it will take a while to get the game automatically
 * Play !
 
+Update
+------
+
+Run `Update.sh` on Linux and `Update.command` on OSX to get new versions
+of the runner.
+
 Problem ?
 ---------
 

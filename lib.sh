@@ -11,10 +11,10 @@ check() {
 }
 
 fetch() {
-  if which wget >/dev/null 2>&1 && false ; then
+  if which wget >/dev/null 2>&1 ; then
     wget --no-check-certificate -c -O ".$1" "$2"
     mv "$1.tmp" "$1"
-  elif which curl >/dev/null 2>&1 && false ; then
+  elif which curl >/dev/null 2>&1 ; then
     curl -L -C - -o ".$1" "$2"
     mv "$1.tmp" "$1"
   else

@@ -3,7 +3,9 @@
 # Updates the Launcher for new versions
 #
 
-set -e
+cd `dirname $0`
+
+. lib.sh
 
 launcher_url="https://github.com/zimbatm/project-zomboid-posix-launcher/zipball/master"
 branch="zimbatm-project-zomboid-posix-launcher"
@@ -19,7 +21,7 @@ unpack() {
 
 rm -rf $branch-*
 
-wget -nv -O launcher-new.zip "$launcher_url"
+fetch launcher-new.zip "$launcher_url"
 
 if [ -f launcher.zip ]; then
   if ! diff launcher.zip launcher-new.zip ; then

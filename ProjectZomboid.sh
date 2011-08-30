@@ -2,19 +2,9 @@
 
 cd `dirname $0`
 
-set -e
+. lib.sh
 
-check() {
-  if ! which $1 >/dev/null 2>&1; then
-    echo "Sorry buddy, I need \`$1\` to work properly."
-    echo
-    echo "Run me again when you installed it."
-    echo
-    exit 1
-  fi
-}
 check java
-check wget
 check uname
 check unzip
 
@@ -35,7 +25,7 @@ pz=pz015testversion_5.zip
 lwjgl=lwjgl-2.7.1
 
 if ! [ -f $lwjgl.zip ]; then
-  wget -O $lwjgl.zip "http://sourceforge.net/projects/java-game-lib/files/Official%20Releases/LWJGL%202.7.1/lwjgl-2.7.1.zip/download"
+  fetch $lwjgl.zip "http://sourceforge.net/projects/java-game-lib/files/Official%20Releases/LWJGL%202.7.1/lwjgl-2.7.1.zip/download"
 fi
 
 if ! [ -d $lwjgl ]; then
@@ -43,7 +33,7 @@ if ! [ -d $lwjgl ]; then
 fi
 
 if ! [ -f $pz ]; then
-  wget -O $pz "https://s3.amazonaws.com/alpha.projectzomboid.com/pz015testversion_5.zip"
+  fetch $pz "https://s3.amazonaws.com/alpha.projectzomboid.com/pz015testversion_5.zip"
   rm -rf pz
 fi
 

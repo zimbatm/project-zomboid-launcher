@@ -32,17 +32,40 @@ file BUILD_DIR / "ProjectZomboid.app.zip" => [LWJGL_ZIP, PZ_ZIP] do
   Dir.chdir(pza / "Contents/Resources/Java") do
     sh "unzip #{PZ_ZIP}"
     sh "unzip #{LWJGL_ZIP}"
-    sh "rm *.jar *.bat *.dll"
+    sh "rm -rf *.jar *.bat *.dll .metadata"
     sh "cp lwjgl-2.7.1/jar/lwjgl.jar ."
     sh "cp lwjgl-2.7.1/jar/lwjgl_util.jar ."
     sh "cp lwjgl-2.7.1/native/macosx/* ."
     sh "rm -rf lwjgl-2.7.1"
   end
   Dir.chdir(BUILD_DIR) do
-    rm "ProjectZomboid.zip"
-    sh "zip -r ProjectZomboid.zip ProjectZomboid.app"
+    rm_f "ProjectZomboid.app.zip"
+    sh "zip -r ProjectZomboid.app.zip ProjectZomboid.app"
   end
 end
 
-desc "Builds OSX app"
+file BUILD_DIR / "ProjectZomboid.tar.gz" => [LWJGL_ZIP, PZ_ZIP] do
+  pz = BUILD_DIR / "ProjectZomboid"
+  rm_rf pz
+  mkdir_p pz
+  sh "cp src/ProjectZomboid.{sh,command} #{pz}"
+  Dir.chdir(pz) do
+    sh "unzip #{PZ_ZIP}"
+    sh "unzip #{LWJGL_ZIP}"
+    sh "rm -rf *.jar *.bat *.dll .metadata"
+    sh "cp lwjgl-2.7.1/jar/lwjgl.jar ."
+    sh "cp lwjgl-2.7.1/jar/lwjgl_util.jar ."
+    sh "cp -r lwjgl-2.7.1/native ."
+    sh "rm -rf lwjgl-2.7.1"
+  end
+  Dir.chdir(BUILD_DIR) do
+    rm_f "ProjectZomboid.tar.gz"
+    sh "tar czvf ProjectZomboid.tar.gz ProjectZomboid"
+  end
+end
+
+desc "Builds PZ.app for OSX"
 task :osx => BUILD_DIR / "ProjectZomboid.app.zip"
+
+desc "Builds PZ for POSIX platforms"
+task :posix => BUILD_DIR / "ProjectZomboid.tar.gz"

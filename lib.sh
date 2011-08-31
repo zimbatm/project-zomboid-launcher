@@ -12,10 +12,10 @@ check() {
 
 fetch() {
   if which wget >/dev/null 2>&1 ; then
-    wget --no-check-certificate -c -O ".$1" "$2"
+    wget --no-check-certificate -c -O "$1.tmp" "$2"
     mv "$1.tmp" "$1"
   elif which curl >/dev/null 2>&1 ; then
-    curl -L -C - -o ".$1" "$2"
+    curl -L -C - -o "$1.tmp" "$2"
     mv "$1.tmp" "$1"
   else
     echo 'Woops, this program needs `wget` or `curl` to work properly.'

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd">
+<plist version="0.9">
+<dict>
+	<key>CFBundleName</key>
+	<string>ProjectZomboid</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.projectzomboid</string>
+	<key>CFBundleVersion</key>
+	<string>0.15.0</string>
+	<key>CFBundleAllowMixedLocalizations</key>
+	<string>true</string>
+	<key>CFBundleExecutable</key>
+	<string>JavaApplicationStub</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleGetInfoString</key>
+	<string>Project Zomboid</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleIconFile</key>
+	<string>GenericApp.icns</string>
+	<key>Java</key>
+	<dict>
+		<key>WorkingDirectory</key>
+		<string>$APP_PACKAGE/Contents/Resources/Java</string>
+		<key>VMOptions</key>
+		<string>-Xms512mm -Xmx1gm</string>
+		<key>MainClass</key>
+                <string>zombie.FrameLoader</string>
+		<key>JVMVersion</key>
+		<string>1.5+</string>
+		<key>ClassPath</key>
+			<array>
+			<string>$JAVAROOT/lwjgl.jar</string>
+			<string>$JAVAROOT/lwjgl_util.jar</string>
+			<string>$JAVAROOT/</string>
+			</array>
+		<key>Properties</key>
+		<dict>
+			<key>sun.java2d.opengl</key>
+			<string>false</string>
+			<key>sun.java2d.noddraw</key>
+			<string>true</string>
+			<key>sun.awt.noerasebackground</key>
+			<string>true</string>
+			<key>sun.java2d.d3d</key>
+			<string>false</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

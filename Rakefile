@@ -10,10 +10,10 @@ BUILD_DIR = Pathname.new("build").expand_path
 
 directory BUILD_DIR
 
-LWJGL_ZIP = BUILD_DIR / "lwjgl-2.7.1.zip" 
 LWJGL_URL = "http://sourceforge.net/projects/java-game-lib/files/Official%20Releases/LWJGL%202.7.1/lwjgl-2.7.1.zip/download"
-PZ_ZIP = BUILD_DIR / "pz015testversion_5.zip"
-PZ_URL = "https://s3.amazonaws.com/alpha.projectzomboid.com/pz015testversion_5.zip"
+LWJGL_ZIP = BUILD_DIR / "lwjgl-2.7.1.zip"
+PZ_URL = "https://s3.amazonaws.com/alpha.projectzomboid.com/pz_0_1_5d.zip"
+PZ_ZIP = BUILD_DIR / File.basename(PZ_URL)
 
 file LWJGL_ZIP => BUILD_DIR do |t|
   sh "wget -c -O #{t.name}.tmp \"#{LWJGL_URL}\""
@@ -32,7 +32,7 @@ file BUILD_DIR / "ProjectZomboid.app.zip" => [LWJGL_ZIP, PZ_ZIP] do
   Dir.chdir(pza / "Contents/Resources/Java") do
     sh "unzip #{PZ_ZIP}"
     sh "unzip #{LWJGL_ZIP}"
-    sh "rm -rf *.jar *.bat *.dll .metadata"
+    sh "rm -rf *.jar *.bat *.dll .metadata zomboid/"
     sh "cp lwjgl-2.7.1/jar/lwjgl.jar ."
     sh "cp lwjgl-2.7.1/jar/lwjgl_util.jar ."
     sh "cp lwjgl-2.7.1/native/macosx/* ."
@@ -52,7 +52,7 @@ file BUILD_DIR / "ProjectZomboid.tar.gz" => [LWJGL_ZIP, PZ_ZIP] do
   Dir.chdir(pz) do
     sh "unzip #{PZ_ZIP}"
     sh "unzip #{LWJGL_ZIP}"
-    sh "rm -rf *.jar *.bat *.dll .metadata"
+    sh "rm -rf *.jar *.bat *.dll .metadata zomboid/"
     sh "cp lwjgl-2.7.1/jar/lwjgl.jar ."
     sh "cp lwjgl-2.7.1/jar/lwjgl_util.jar ."
     sh "cp -r lwjgl-2.7.1/native ."

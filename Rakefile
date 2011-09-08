@@ -63,7 +63,6 @@ task :osx => t.name
 t = file BUILD_DIR / "ProjectZomboid.#{VERSION}.tar.gz" => [LWJGL_ZIP, PZ_ZIP, "Rakefile"] do |t|
   pz = BUILD_DIR / "ProjectZomboid"
   rm_rf pz
-  mkdir_p pz
   sh "cp -r src/ProjectZomboid.tpl build/ProjectZomboid"
   Dir.chdir(pz) do
     sh "unzip #{PZ_ZIP}"

@@ -41,7 +41,7 @@ file "Rakefile"
 t = file BUILD_DIR / "ProjectZomboid.app.#{VERSION}.zip" => [LWJGL_ZIP, PZ_ZIP, "Rakefile"] do |t|
   pza = BUILD_DIR / "ProjectZomboid.app"
   rm_rf pza
-  sh "cp -r src/ProjectZomboid.tpl build/ProjectZomboid.app"
+  sh "cp -r src/ProjectZomboid.app.tpl build/ProjectZomboid.app"
   Dir.chdir(pza / "Contents/Resources/Java") do
     sh "unzip #{PZ_ZIP}"
     sh "unzip #{LWJGL_ZIP}"
@@ -64,8 +64,7 @@ t = file BUILD_DIR / "ProjectZomboid.#{VERSION}.tar.gz" => [LWJGL_ZIP, PZ_ZIP, "
   pz = BUILD_DIR / "ProjectZomboid"
   rm_rf pz
   mkdir_p pz
-  sh "cp src/ProjectZomboid.{sh,command} #{pz}"
-  sh "cp src/ProjectZomboid_optimized.sh #{pz}"
+  sh "cp -r src/ProjectZomboid.tpl build/ProjectZomboid"
   Dir.chdir(pz) do
     sh "unzip #{PZ_ZIP}"
     sh "unzip #{LWJGL_ZIP}"

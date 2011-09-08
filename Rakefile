@@ -17,6 +17,15 @@ LWJGL_ZIP = BUILD_DIR / "lwjgl-2.7.1.zip"
 PZ_URL = "https://s3.amazonaws.com/alpha.projectzomboid.com/pz_0_1_5d.zip"
 PZ_ZIP = BUILD_DIR / File.basename(PZ_URL)
 
+desc "Builds PZ.app for OSX"
+task :osx
+
+desc "Builds PZ for POSIX platforms"
+task :posix
+
+
+
+
 file LWJGL_ZIP => BUILD_DIR do |t|
   sh "wget -c -O #{t.name}.tmp \"#{LWJGL_URL}\""
   mv "#{t.name}.tmp", t.name
@@ -56,6 +65,7 @@ t = file BUILD_DIR / "ProjectZomboid.#{VERSION}.tar.gz" => [LWJGL_ZIP, PZ_ZIP, "
   rm_rf pz
   mkdir_p pz
   sh "cp src/ProjectZomboid.{sh,command} #{pz}"
+  sh "cp src/ProjectZomboid_optimized.sh #{pz}"
   Dir.chdir(pz) do
     sh "unzip #{PZ_ZIP}"
     sh "unzip #{LWJGL_ZIP}"
@@ -71,9 +81,3 @@ t = file BUILD_DIR / "ProjectZomboid.#{VERSION}.tar.gz" => [LWJGL_ZIP, PZ_ZIP, "
   end
 end
 task :posix => t.name
-
-desc "Builds PZ.app for OSX"
-task :osx
-
-desc "Builds PZ for POSIX platforms"
-task :posix

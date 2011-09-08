@@ -10,6 +10,8 @@ BUILD_DIR = Pathname.new("build").expand_path
 
 directory BUILD_DIR
 
+VERSION = "0.1.5d"
+
 LWJGL_URL = "http://sourceforge.net/projects/java-game-lib/files/Official%20Releases/LWJGL%202.7.1/lwjgl-2.7.1.zip/download"
 LWJGL_ZIP = BUILD_DIR / "lwjgl-2.7.1.zip"
 PZ_URL = "https://s3.amazonaws.com/alpha.projectzomboid.com/pz_0_1_5d.zip"
@@ -25,7 +27,9 @@ file PZ_ZIP => BUILD_DIR do |t|
   mv "#{t.name}.tmp", t.name
 end
 
-file BUILD_DIR / "ProjectZomboid.app.zip" => [LWJGL_ZIP, PZ_ZIP] do
+file "Rakefile"
+
+t = file BUILD_DIR / "ProjectZomboid.app.#{VERSION}.zip" => [LWJGL_ZIP, PZ_ZIP, "Rakefile"] do |t|
   pza = BUILD_DIR / "ProjectZomboid.app"
   rm_rf pza
   sh "cp -r src/ProjectZomboid.tpl build/ProjectZomboid.app"
@@ -38,13 +42,16 @@ file BUILD_DIR / "ProjectZomboid.app.zip" => [LWJGL_ZIP, PZ_ZIP] do
     sh "cp lwjgl-2.7.1/native/macosx/* ."
     sh "rm -rf lwjgl-2.7.1"
   end
+  sh "sed -e 's/$VERSION/#{VERSION}/g' -i.bak #{pza}/Contents/Info.plist"
+  rm pza / "Contents/Info.plist.bak"
   Dir.chdir(BUILD_DIR) do
-    rm_f "ProjectZomboid.app.zip"
-    sh "zip -r ProjectZomboid.app.zip ProjectZomboid.app"
+    rm_f t.name
+    sh "zip -r #{t.name} ProjectZomboid.app"
   end
 end
+task :osx => t.name
 
-file BUILD_DIR / "ProjectZomboid.tar.gz" => [LWJGL_ZIP, PZ_ZIP] do
+t = file BUILD_DIR / "ProjectZomboid.#{VERSION}.tar.gz" => [LWJGL_ZIP, PZ_ZIP, "Rakefile"] do |t|
   pz = BUILD_DIR / "ProjectZomboid"
   rm_rf pz
   mkdir_p pz
@@ -59,13 +66,14 @@ file BUILD_DIR / "ProjectZomboid.tar.gz" => [LWJGL_ZIP, PZ_ZIP] do
     sh "rm -rf lwjgl-2.7.1"
   end
   Dir.chdir(BUILD_DIR) do
-    rm_f "ProjectZomboid.tar.gz"
-    sh "tar czvf ProjectZomboid.tar.gz ProjectZomboid"
+    rm_f t.name
+    sh "tar czvf #{t.name} ProjectZomboid"
   end
 end
+task :posix => t.name
 
 desc "Builds PZ.app for OSX"
-task :osx => BUILD_DIR / "ProjectZomboid.app.zip"
+task :osx
 
 desc "Builds PZ for POSIX platforms"
-task :posix => BUILD_DIR / "ProjectZomboid.tar.gz"
+task :posix

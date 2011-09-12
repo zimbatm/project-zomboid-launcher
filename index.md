@@ -24,6 +24,11 @@ Instructions
 
 Download, unpack, run the app. On linux, run `ProjectZomboid.sh`.
 
+Known issues
+------------
+
+* [Ctrl doesn't work to swing the weapons. Use the Z key instead.](http://theindiestone.com/mantis/view.php?id=676)
+
 Changes
 -------
 

@@ -28,6 +28,7 @@ Known issues
 ------------
 
 * [Ctrl doesn't work to swing the weapons. Use the Z key instead.](http://theindiestone.com/mantis/view.php?id=676)
+* Bought the game from Desura and can't login ? Just enter the Desura game key. No login/password required.
 
 Changes
 -------

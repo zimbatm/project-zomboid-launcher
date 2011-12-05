@@ -24,12 +24,16 @@ Instructions
 
 Download, unpack, run the app. On linux, run `ProjectZomboid.sh`.
 
+If you have issues, make sure your Java is up to date and read the
+following section.
+
 Known issues
 ------------
 
 * [Ctrl doesn't work to swing the weapons. Use the Z key instead.](http://theindiestone.com/mantis/view.php?id=676)
 * Bought the game from Desura and can't login ? Just enter the Desura game key. No login/password required.
 * The Linux client only works in sandbox mode
+* Mac 10.5 need to update their Java
 
 Changes
 -------

@@ -35,6 +35,13 @@ Known issues
 * The Linux client only works in sandbox mode
 * Mac 10.5 need to update their Java
 
+Want to remove an existing key ?
+--------------------------------
+
+For Mac users, run `find /var/folders -name "*.log" -delete"`
+
+For Linux users, ???
+
 Changes
 -------
 

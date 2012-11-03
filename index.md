@@ -55,7 +55,11 @@ Problem ?
 * Issue: The game screen flickers on the login screen
 * Solution: Just login
 
+* Issue: The app doesn't open on OSX.
+* Solution: Right-Click on the app, select the "Open" menu entry.
+
 Have another problem ? [Create a ticket](https://github.com/zimbatm/project-zomboid-launcher/issues/new) with as much details as possible. Or send me an email at jonas@pfenniger.name
+
 
 Coder ?
 -------

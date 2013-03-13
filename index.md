@@ -15,8 +15,10 @@ Get it
 
 *Make sure to [Buy Project Zomboid](http://projectzomboid.com/blog/index.php/buy-our-games/) to get a login*
 
-* [ProjectZomboid.app](https://github.com/downloads/zimbatm/project-zomboid-launcher/ProjectZomboid.app.0.1.5d.zip) - v0.1.5d for Mac
-* [ProjectZomboid.tar.gz](https://github.com/downloads/zimbatm/project-zomboid-launcher/ProjectZomboid.0.1.5d.tar.gz) - v0.1.5d for Linux
+*
+[ProjectZomboid.app](http://zimbatm.s3.amazonaws.com/project-zomboid-launcher/ProjectZomboid.app.0.1.5d.zip) - v0.1.5d for Mac
+*
+[ProjectZomboid.tar.gz](http://zimbatm.s3.amazonaws.com/project-zomboid-launcher/ProjectZomboid.0.1.5d.tar.gz) - v0.1.5d for Linux
 * for Windows, got to the [Official Site](http://projectzomboid.com/)
 
 Instructions
